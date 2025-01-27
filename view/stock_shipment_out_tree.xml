@@ -1,0 +1,9 @@
+<data>
+    <xpath expr="/tree/field[@name='number']" position="after">
+        <field name="user" optional="0"/>
+    </xpath>
+    <xpath expr="/tree" position="inside">
+        <field name="printed_on" optional="1" widget="date"/>
+        <field name="printed_on" optional="1" widget="time"/>
+    </xpath>
+</data>
