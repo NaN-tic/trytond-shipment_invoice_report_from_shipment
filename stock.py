@@ -14,7 +14,7 @@ from sql import Literal
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    
+
     @classmethod
     def __setup__(cls):
         super().__setup__()
