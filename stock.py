@@ -321,8 +321,9 @@ class ShipmentOutReturnInvoiceReport(Report):
         shipments = Shipment.browse(ids)
         invoice_ids = [x.id for y in shipments for x in y.invoices]
         if not invoice_ids:
-            raise UserError(gettext('vinalium.msg_no_invoice_to_print',
-                    shipment=shipments[0].rec_name))
+            raise UserError(gettext(
+                'shipment_invoice_report_from_shipment.msg_no_invoice_to_print',
+                shipment=shipments[0].rec_name))
         # Pass and empty dict instead of data, to prevent super from getting
         # the incorrect invoice action (ShipmentOutReturnInvoiceReport instead
         # of InvoiceReport)
