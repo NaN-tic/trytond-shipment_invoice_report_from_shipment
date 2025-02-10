@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.shipment.out,invoices:"
+msgid "Invoices"
+msgstr "Facturas"
+
+msgctxt "field:stock.shipment.out,postable:"
+msgid "Postable"
+msgstr "Contabilizable"
+
+msgctxt "field:stock.shipment.out,printed_on:"
+msgid "Printed"
+msgstr "Impreso"
+
+msgctxt "field:stock.shipment.out,processing:"
+msgid "Processing"
+msgstr "En proceso"
+
+msgctxt "field:stock.shipment.out,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:stock.shipment.out.return,invoices:"
+msgid "Invoices"
+msgstr "Facturas"
+
+msgctxt "field:stock.shipment.out.return,postable:"
+msgid "Postable"
+msgstr "Contabilizable"
+
+msgctxt "field:stock.shipment.out.return,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "model:ir.action,name:report_shipment_out_invoice"
+msgid "Shipment Out Invoice"
+msgstr "Factura de Albarán de Cliente"
+
+msgctxt "model:ir.action,name:report_shipment_out_return_invoice"
+msgid "Shipment Out Return Invoice"
+msgstr "Factura de devolución de envío"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_other"
+msgid "Other"
+msgstr "Otro"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_processing"
+msgid "Processing"
+msgstr "En proceso"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_to_print"
+msgid "To Print"
+msgstr "Para imprimir"
+
+msgctxt "model:ir.message,text:msg_no_invoice_to_print"
+msgid "Shipment \"%(shipment)s\" has no invoice to print yet."
+msgstr "El albarán \"%(shipment)s\" aún no tiene factura para imprimir."
+
+msgctxt "model:ir.message,text:msg_quantity_greater_than_assigned"
+msgid ""
+"The quantity of the following moves is greater than the assigned quantity: "
+"%(moves)s"
+msgstr ""
+"La cantidad de los siguientes movimientos es mayor que la cantidad asignada: \n"
+"\n"
+"%(movimientos)s"
+
+msgctxt "model:ir.model.button,confirm:shipment_out_pack_pack_do_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr "¿Está seguro de que desea finalizar el albarán?"
+
+msgctxt "model:ir.model.button,string:post_invoices_button"
+msgid "Post Invoices"
+msgstr "Contabilizar facturas"
+
+msgctxt "model:ir.model.button,string:post_invoices_out_return_button"
+msgid "Post Invoices"
+msgstr "Contabilizar facturas"
+
+msgctxt "model:ir.model.button,string:shipment_out_pack_pack_do_button"
+msgid "Complete"
+msgstr "Finalizar"
