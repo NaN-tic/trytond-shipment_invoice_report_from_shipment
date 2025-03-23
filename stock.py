@@ -44,10 +44,7 @@ class Move(metaclass=PoolMeta):
                 message = []
                 for move, quantity in to_warn:
                     quantity = move.unit.round(quantity)
-                    lot = ''
-                    if move.lot:
-                        lot = f' ({move.lot.rec_name})'
-                    message.append(f'{move.product.rec_name}{lot}: '
+                    message.append(f'{move.product.rec_name}: '
                         f'{move.quantity} -> {quantity}')
                 raise UserWarning(key, gettext(
                     'shipment_invoice_report_from_shipment.msg_quantity_greater_than_assigned',
