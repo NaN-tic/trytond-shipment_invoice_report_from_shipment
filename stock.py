@@ -159,6 +159,8 @@ class ShipmentOut(metaclass=PoolMeta):
         Sale.process(to_process)
         to_post = []
         for shipment in cls.browse(shipments):
+            if not shipment.postable:
+                continue
             for invoice in shipment.invoices:
                 if invoice.state == 'draft' and invoice not in to_post:
                     to_post.append(invoice)
@@ -168,6 +170,13 @@ class ShipmentOut(metaclass=PoolMeta):
     def get_postable(self, name):
         if self.state != 'done':
             return False
+        method = getattr(self.customer, 'sale_invoice_grouping_method',
+            None)
+        if method == 'standard':
+            period = getattr(self.customer,
+                'sale_invoice_grouping_period', None)
+            if not period or period != 'daily':
+                return False
         if any([x for x in self.invoices if x.state == 'draft']):
             return True
         return False
@@ -296,6 +305,8 @@ class ShipmentOutReturn(metaclass=PoolMeta):
 
         to_post = []
         for shipment in shipments:
+            if not shipment.postable:
+                continue
             for invoice in shipment.invoices:
                 if invoice.state == 'draft' and invoice not in to_post:
                     to_post.append(invoice)
@@ -304,6 +315,13 @@ class ShipmentOutReturn(metaclass=PoolMeta):
     def get_postable(self, name):
         if self.state != 'done':
             return False
+        method = getattr(self.customer, 'sale_invoice_grouping_method',
+            None)
+        if method == 'standard':
+            period = getattr(self.customer,
+                'sale_invoice_grouping_period', None)
+            if not period or period != 'daily':
+                return False
         if any([x for x in self.invoices if x.state == 'draft']):
             return True
         return False
