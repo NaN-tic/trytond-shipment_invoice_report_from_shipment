@@ -12,6 +12,7 @@ from trytond.pyson import Eval, Bool
 from trytond.i18n import gettext
 from sql import Literal
 
+
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
@@ -50,6 +51,7 @@ class Move(metaclass=PoolMeta):
                     'shipment_invoice_report_from_shipment.msg_quantity_greater_than_assigned',
                     moves='\n'.join(message)))
         super().write(*args)
+
 
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
@@ -108,12 +110,12 @@ class ShipmentOut(metaclass=PoolMeta):
             ]]
 
     def get_invoices(self, name):
-        invoices = []
+        invoices = set()
         for move in self.moves:
             for line in move.invoice_lines:
-                if line.invoice not in invoices:
-                    invoices.append(line.invoice)
-        return invoices
+                if line.invoice is not None:
+                    invoices.add(line.invoice.id)
+        return list(invoices)
 
     def get_processing(self, name):
         if self.state != 'done' or self.printed_on:
@@ -199,6 +201,7 @@ class ShipmentOut(metaclass=PoolMeta):
                 to_save.append(shipment)
         cls.save(to_save)
 
+
 class ShipmentOutInvoiceReport(Report):
     'Shipment Out Invoice Report'
     __name__ = 'stock.shipment.out.invoice'
@@ -240,6 +243,7 @@ class ShipmentOutInvoiceReport(Report):
         # the incorrect invoice action (ShipmentOutInvoiceReport instead of
         # InvoiceReport)
         return InvoiceReport.execute(invoice_ids, {})
+
 
 class ShipmentOutReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
