@@ -58,7 +58,7 @@ class ShipmentOut(metaclass=PoolMeta):
 
     user = fields.Function(fields.Many2One('res.user', 'User'), 'get_user',
         searcher='search_user')
-    invoices = fields.Function(fields.Many2Many('account.invoice', None,
+    invoices = fields.Function(fields.One2Many('account.invoice', None,
         'Invoices'), 'get_invoices')
     processing = fields.Function(fields.Boolean('Processing'), 'get_processing',
         searcher='search_processing')
@@ -241,7 +241,7 @@ class ShipmentOutReturn(metaclass=PoolMeta):
 
     user = fields.Function(fields.Many2One('res.user', 'User'), 'get_user',
         searcher='search_user')
-    invoices = fields.Function(fields.Many2Many('account.invoice', None, 'Invoices'),
+    invoices = fields.Function(fields.One2Many('account.invoice', None, 'Invoices'),
         'get_invoices')
     postable = fields.Function(fields.Boolean('Postable'), 'get_postable')
 
