@@ -68,7 +68,7 @@ msgid ""
 msgstr ""
 "La cantidad de los siguientes movimientos es mayor que la cantidad asignada: \n"
 "\n"
-"%(movimientos)s"
+"%(moves)s"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_pack_pack_do_button"
 msgid "Are you sure you want to complete the shipment?"
