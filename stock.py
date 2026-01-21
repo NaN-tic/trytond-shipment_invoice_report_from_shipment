@@ -206,13 +206,26 @@ class ShipmentOutInvoiceReport(Report):
 
     @classmethod
     def execute(cls, ids, data):
-        cls.check_access()
         pool = Pool()
         Shipment = pool.get('stock.shipment.out')
         InvoiceReport = Pool().get('account.invoice', type='report')
+        ActionReport = pool.get('ir.action.report')
 
         if not ids:
             return
+
+        action_id = data.get('action_id')
+        if action_id is None:
+            action_reports = ActionReport.search([
+                    ('report_name', '=', cls.__name__)
+                    ])
+            assert action_reports, '%s not found' % cls
+            action_report = action_reports[0]
+        else:
+            action_report = ActionReport(action_id)
+
+        model = action_report.model or data.get('model')
+        cls.check_access(action_report, model, ids)
         shipments = Shipment.browse(ids)
         # Sort shipments by customer and number before printing
         # This better suits users needs because they'll put all invoices
