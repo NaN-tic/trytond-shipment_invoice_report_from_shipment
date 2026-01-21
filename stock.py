@@ -215,7 +215,8 @@ class ShipmentOutInvoiceReport(Report):
 
     @classmethod
     def execute(cls, ids, data):
-        cls.check_access()
+        action, model = cls.get_action(data)
+        cls.check_access(action, model, ids)
         pool = Pool()
         Shipment = pool.get('stock.shipment.out')
         InvoiceReport = Pool().get('account.invoice', type='report')
